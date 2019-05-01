@@ -717,7 +717,6 @@ void Picture::refill( struct picCodeNode *temp_fill_start, struct picCodeNode *t
    struct picCodeNode *temp,*picPos0,*temp_pic=0,*temp_pri=0;
    int col_pic_orig,col_pri_orig,col_pic_new,col_pri_new;
    bool picDrawEnabled_orig,priDrawEnabled_orig;
-   bool picDrawEnabled_new,priDrawEnabled_new;
    bool draw_pic_orig,draw_pri_orig,draw_pic_new,draw_pri_new;
 
    picDrawEnabled_orig=priDrawEnabled_orig=false;
@@ -833,7 +832,6 @@ void Picture::refill( struct picCodeNode *temp_fill_start, struct picCodeNode *t
 
 
    temp = temp_fill_end;
-   picDrawEnabled_new=priDrawEnabled_new=false;
    col_pic_new=col_pri_new=-1;
    draw_pic_new=draw_pri_new = false;
    if(temp){
@@ -841,14 +839,12 @@ void Picture::refill( struct picCodeNode *temp_fill_start, struct picCodeNode *t
        switch(temp->node){
        case 0xf0:
          col_pic_new = (temp->next)->node;
-         picDrawEnabled_new=true;
          break;
        case 0xf1:
          col_pic_new = -2;
          break;
        case 0xf2:
          col_pri_new = (temp->next)->node;
-         priDrawEnabled_new=true;
          break;
        case 0xf3:
          col_pri_new = -2;

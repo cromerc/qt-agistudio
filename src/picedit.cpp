@@ -908,11 +908,9 @@ void PCanvas::setPixsize(int s)
 //*********************************************
 void PCanvas::viewportMousePressEvent(QMouseEvent* event)
 {
-  int x,y,xx,yy;
+  int x,y;
 
   viewportToContents( event->x(),  event->y(), x, y );
-  xx=x;
-  yy=y;
   x-=x0;
   y-=y0;
 
@@ -944,11 +942,9 @@ void PCanvas::viewportMousePressEvent(QMouseEvent* event)
 //*********************************************
 void PCanvas::viewportMouseMoveEvent(QMouseEvent* event)
 {
-  int x,y,xx,yy;
+  int x,y;
 
   viewportToContents( event->x(),  event->y(), x, y );
-  xx=x;
-  yy=y;
 
   x-=x0;
   y-=y0;
@@ -1025,8 +1021,8 @@ void PCanvas::update()
   if(pri_lines){
     QPen pen;
     pen.setStyle(Qt::DashLine);
-    pen.setWidth(1);  
-    
+    pen.setWidth(1);
+
     //p.setPen(Qt::white);
     // p.setRasterOp(XorROP);
     int i=4;

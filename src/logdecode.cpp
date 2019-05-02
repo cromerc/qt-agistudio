@@ -662,7 +662,7 @@ int Logic::decode(int ResNum)
     else if(CurByte <= NumAGICommands){
       ThisCommand = CurByte;
       ThisLine = MultStr("  ",BlockDepth);
-      if (game->show_special_syntax && (ThisCommand>=0x01 && ThisCommand<=0x0B)||(ThisCommand>=0xA5&&ThisCommand<=0xA8))AddSpecialSyntaxCommand();
+      if (game->show_special_syntax && ((ThisCommand>=0x01 && ThisCommand<=0x0B)||(ThisCommand>=0xA5&&ThisCommand<=0xA8)))AddSpecialSyntaxCommand();
       else{
         ThisLine+=(string(AGICommand[ThisCommand].Name) + "(");
         ArgsStart = ThisLine.length();

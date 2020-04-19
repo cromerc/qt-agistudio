@@ -302,8 +302,8 @@ int Game::from_template(string name)
   struct _finddata_t c_file;
   long hFile;
   if ((hFile = _findfirst(tmp, &c_file)) != -1L) do {
-    sprintf(tmp2,"%s/%s",templatedir.c_str(),c_file.name);
-    cfilename = tmp2;
+    sprintf(tmp,"%s/%s",templatedir.c_str(),c_file.name);
+    cfilename = tmp;
 #else
   glob_t globbuf;
   glob(tmp, 0, NULL, &globbuf);
@@ -335,8 +335,8 @@ int Game::from_template(string name)
   sprintf(tmp,"%s/src/*",templatedir.c_str());
 #ifdef _WIN32
   if ((hFile = _findfirst(tmp, &c_file)) != -1L) do {
-    sprintf(tmp2,"%s/src/%s",templatedir.c_str(),c_file.name);
-    cfilename = tmp2;
+    sprintf(tmp,"%s/src/%s",templatedir.c_str(),c_file.name);
+    cfilename = tmp;
 #else
   glob(tmp, 0, NULL, &globbuf);
   for(i=0;i<(int)globbuf.gl_pathc;i++){  //copy template src subdirectory
